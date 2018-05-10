@@ -5,4 +5,4 @@ package-lock.json
 yarn.lock
 .env.test
 .env.development
-.DS_Store
+public/.DS_Store
