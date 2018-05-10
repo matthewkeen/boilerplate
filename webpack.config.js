@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-if(process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV === 'test') {
   require('dotenv').config({ path: '.env.test' });
 } else if (process.env.NODE_ENV === 'development') {
   require('dotenv').config({ path: '.env.development' });
@@ -17,7 +17,7 @@ module.exports = (env) => {
   return {
     entry: ['babel-polyfill', './src/app.js'],
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
     },
     module: {
@@ -40,7 +40,7 @@ module.exports = (env) => {
                 sourceMap: true
               }
             }
-            
+
           ]
         })
       }]
@@ -62,7 +62,8 @@ module.exports = (env) => {
       contentBase: path.join(__dirname, 'public'),
       host: '0.0.0.0',
       disableHostCheck: true,
-      historyApiFallback: true
+      historyApiFallback: true,
+      publicPath: '/dist/'
     }
   }
 }
